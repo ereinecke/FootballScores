@@ -16,7 +16,7 @@ public class AboutActivity extends ActionBarActivity {
         setContentView(R.layout.activity_about);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new AboutFragment())
                     .commit();
         }
     }
@@ -46,11 +46,11 @@ public class AboutActivity extends ActionBarActivity {
     */
 
     /**
-     * A placeholder fragment containing a simple view.
+     * A fragment containing a simple TextView.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class AboutFragment extends Fragment {
 
-        public PlaceholderFragment() {
+        public AboutFragment() {
         }
 
         @Override

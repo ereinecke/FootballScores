@@ -1,31 +1,34 @@
 package barqsoft.footballscores;
 
 /**
- * Created by yehya khaled on 3/3/2015.
+ * Created by yehya khaled on 3/3/2015.  Many updates by Erik Reinecke.
  */
 public class Utilities
 {
-    public static final int SERIE_A = 357;
-    public static final int PREMIER_LEAGUE = 354;
-    public static final int CHAMPIONS_LEAGUE = 362;
-    public static final int PRIMERA_DIVISION = 358;
-    public static final int BUNDESLIGA = 351;
 
     public static String getLeague(int league_num)
     {
         switch (league_num)
         {
-            case SERIE_A : return "Serie A";
-            case PREMIER_LEAGUE: return "Premier League";
-            case CHAMPIONS_LEAGUE : return "UEFA Champions League";
-            case PRIMERA_DIVISION : return "Primera Division";
-            case BUNDESLIGA : return "Bundesliga";
+            // Added all leagues supported by the API
+            case Constants.BUNDESLIGA1 :          return "1. Bundesliga";
+            case Constants.BUNDESLIGA2 :          return "2. Bundesliga";
+            case Constants.LIGUE1 :               return "Ligue 1";
+            case Constants.LIGUE2 :               return "Ligue 2";
+            case Constants.PREMIER_LEAGUE:        return "Premier League";
+            case Constants.PRIMERA_DIVISION :     return "Primera Division";
+            case Constants.SEGUNDA_DIVISION :     return "Segunda Division";
+            case Constants.SERIE_A :              return "Serie A";
+            case Constants.PRIMEIRA_LIGA :        return "Primeira Liga";
+            case Constants.BUNDESLIGA3 :          return "3. Bundesliga";
+            case Constants.EREDIVISIE :           return "Eredivisie";
+            case Constants.CHAMPIONS2015_2016 :   return "UEFA Champions League";
             default: return "Unknown League please report";
         }
     }
     public static String getMatchDay(int match_day,int league_num)
     {
-        if(league_num == CHAMPIONS_LEAGUE)
+        if(league_num == Constants.CHAMPIONS2015_2016)
         {
             if (match_day <= 6)
             {
@@ -71,7 +74,7 @@ public class Utilities
         if (teamname==null){return R.drawable.no_icon;}
         switch (teamname)
         { //This is the set of icons that are currently in the app. Feel free to find and add more
-            //as you go.
+          // as you go.
             case "Arsenal London FC" : return R.drawable.arsenal;
             case "Manchester United FC" : return R.drawable.manchester_united;
             case "Swansea City" : return R.drawable.swansea_city_afc;
@@ -82,7 +85,7 @@ public class Utilities
             case "West Bromwich Albion" : return R.drawable.west_bromwich_albion_hd_logo;
             case "Sunderland AFC" : return R.drawable.sunderland;
             case "Stoke City FC" : return R.drawable.stoke_city;
-            default: return R.drawable.no_icon;
+            default: return R.drawable.football;
         }
     }
 }

@@ -36,7 +36,7 @@
         </activity>
 
         <service
-            android:name=".service.myFetchService" />
+            android:name=".service.FetchScoreService" />
 
         <service
             android:name=".service.WidgetService"

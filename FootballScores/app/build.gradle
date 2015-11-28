@@ -6,11 +6,10 @@ android {
 
     defaultConfig {
         applicationId "barqsoft.footballscores"
-        // TODO: Change minSdkVersion back to 10, excluding collection widget features for that level
         minSdkVersion 11
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
     }
     buildTypes {
         release {

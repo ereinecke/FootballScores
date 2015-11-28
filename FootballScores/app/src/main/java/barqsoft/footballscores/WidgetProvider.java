@@ -10,8 +10,9 @@ import android.widget.RemoteViews;
 
 /* WidgetProvider for Football Scores widget
  *
- * Created by ereinecke on 11/24/15.
+ * Created by Erik Reinecke on 11/24/15.
  */
+
 public class WidgetProvider extends AppWidgetProvider {
     final static String LOG_TAG = WidgetProvider.class.getSimpleName();
 
@@ -30,7 +31,7 @@ public class WidgetProvider extends AppWidgetProvider {
             // Get the layout for the App Widget and attach an on-click listener to the button
             RemoteViews views = new RemoteViews(context.getPackageName(),
                                     R.layout.scores_widget_list_item);
-            // TODO: figure out what to use for a button on the view.
+
             Log.d(LOG_TAG, "Calling setOnClickPendingIntent");
             views.setOnClickPendingIntent(R.id.scores_widget_list_item, pendingIntent);
 
