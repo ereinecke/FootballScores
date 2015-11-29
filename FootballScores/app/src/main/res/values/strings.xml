@@ -22,10 +22,13 @@
     <string name="share_text">Share</string>
     <string name="about">About</string>
     <string name="title_activity_about">AboutActivity</string>
+    <string name="version">Version:\u0020</string>
+    <string name="not_available">not available.</string>
     <string name="about_text">
-        This application displays football match scores for the Premier League, Seria A, Bundesliga,
-        Primera Division and the UEFA Champions League.\n
-        All match data are acquired from football-data.org API.  During the off season, fake data
+        This application displays football match scores for the Premier League, Seria A, the
+        Bundesligas, Primera Division, Segunda Division, the Ligues, Primeira Liga, Eridivisie and
+        the UEFA Champions League.\n
+        All match data are acquired from football-data.org API.  During the off-season, fake data
         will be added to the app.\n
         All team logos are acquired from http://hdlogo.wordpress.com/ upon requesting permission
         from the owner.\n

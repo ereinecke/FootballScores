@@ -31,7 +31,7 @@ public class Constants {
     // URI building blocks
     public static final String CONTENT_AUTHORITY = "barqsoft.footballscores";
     public static final String PATH = "scores";
-    public static Uri BASE_CONTENT_URI = Uri.parse("content://"+CONTENT_AUTHORITY);
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static final String SEASON_LINK = "http://api.football-data.org/alpha/soccerseasons/";
     public static final String MATCH_LINK = "http://api.football-data.org/alpha/fixtures/";

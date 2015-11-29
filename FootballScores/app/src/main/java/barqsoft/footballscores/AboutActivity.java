@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class AboutActivity extends ActionBarActivity {
@@ -56,7 +57,16 @@ public class AboutActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_about, container, false);
+            View view = inflater.inflate(R.layout.fragment_about, container, false);
+            // Get version name
+            String versionName = BuildConfig.VERSION_NAME;
+            if (versionName == "") {
+                versionName = getString(R.string.not_available);
+            }
+
+            TextView versionText = (TextView) view.findViewById(R.id.about_version);
+            versionText.setText(getString(R.string.version) + versionName);
+            return view;
         }
     }
 }
