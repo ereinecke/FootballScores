@@ -109,12 +109,14 @@ public class FetchScoreService extends IntentService
         }
         try {
             if (JSON_data != null) {
-                //This bit is to check if the data contains any matches. If not, we call processJson on the dummy data
+                // This bit is to check if the data contains any matches. If not, we call processJson
+                // on the dummy data
                 JSONArray matches = new JSONObject(JSON_data).getJSONArray("fixtures");
                 if (matches.length() == 0) {
                     //if there is no data, call the function on dummy data
                     //this is expected behavior during the off season.
-                    processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
+                    processJSONdata(getString(R.string.dummy_data),
+                            getApplicationContext(), false);
                     return;
                 }
 
@@ -130,8 +132,7 @@ public class FetchScoreService extends IntentService
         }
     }
 
-    private void processJSONdata (String JSONdata,Context mContext, boolean isReal)
-    {
+    private void processJSONdata (String JSONdata,Context mContext, boolean isReal) {
         Log.d(LOG_TAG, "Processing JSON data");
         //JSON data
         // Modified code to use league definitions in Constants.java
@@ -152,9 +153,8 @@ public class FetchScoreService extends IntentService
             JSONArray matches = new JSONObject(JSONdata).getJSONArray(Constants.FIXTURES);
 
             //ContentValues to be inserted
-            Vector<ContentValues> values = new Vector <ContentValues> (matches.length());
-            for(int i = 0;i < matches.length();i++)
-            {
+            Vector<ContentValues> values = new Vector<ContentValues>(matches.length());
+            for (int i = 0; i < matches.length(); i++) {
 
                 JSONObject match_data = matches.getJSONObject(i);
                 leagueStr = match_data.getJSONObject(Constants.LINKS)
@@ -166,19 +166,18 @@ public class FetchScoreService extends IntentService
                 // This if statement controls which leagues we're interested in the data from.
                 // If you are finding no data in the app, check that this contains all the leagues.
                 // If it doesn't, that can cause an empty DB, bypassing the dummy data routine.
-                if( league == Constants.BUNDESLIGA1         ||
-                    league == Constants.BUNDESLIGA2         ||
-                    league == Constants.LIGUE1              ||
-                    league == Constants.LIGUE2              ||
-                    league == Constants.PREMIER_LEAGUE      ||
-                    league == Constants.PRIMERA_DIVISION    ||
-                    league == Constants.SEGUNDA_DIVISION    ||
-                    league == Constants.SERIE_A             ||
-                    league == Constants.PRIMEIRA_LIGA       ||
-                    league == Constants.BUNDESLIGA3         ||
-                    league == Constants.EREDIVISIE          ||
-                    league == Constants.CHAMPIONS2015_2016)
-                {
+                if (league == Constants.BUNDESLIGA1 ||
+                        league == Constants.BUNDESLIGA2 ||
+                        league == Constants.LIGUE1 ||
+                        league == Constants.LIGUE2 ||
+                        league == Constants.PREMIER_LEAGUE ||
+                        league == Constants.PRIMERA_DIVISION ||
+                        league == Constants.SEGUNDA_DIVISION ||
+                        league == Constants.SERIE_A ||
+                        league == Constants.PRIMEIRA_LIGA ||
+                        league == Constants.BUNDESLIGA3 ||
+                        league == Constants.EREDIVISIE ||
+                        league == Constants.CHAMPIONS2015_2016) {
                     match_id = match_data.getJSONObject(Constants.LINKS)
                             .getJSONObject(Constants.SELF).getString("href");
                     match_id = match_id.replace(Constants.MATCH_LINK, "");
@@ -186,32 +185,30 @@ public class FetchScoreService extends IntentService
                     if (!isReal) {
                         //This if statement changes the match ID of the dummy data so that it all
                         // goes into the database
-                        match_id=match_id+Integer.toString(i);
+                        match_id = match_id + Integer.toString(i);
                     }
 
                     mDate = match_data.getString(Constants.MATCH_DATE);
                     mTime = mDate.substring(mDate.indexOf("T") + 1, mDate.indexOf("Z"));
-                    mDate = mDate.substring(0,mDate.indexOf("T"));
+                    mDate = mDate.substring(0, mDate.indexOf("T"));
                     SimpleDateFormat match_date = new SimpleDateFormat("yyyy-MM-ddHH:mm:ss");
                     match_date.setTimeZone(TimeZone.getTimeZone("UTC"));
 
                     try {
-                        Date parseddate = match_date.parse(mDate+mTime);
+                        Date parseddate = match_date.parse(mDate + mTime);
                         SimpleDateFormat new_date = new SimpleDateFormat("yyyy-MM-dd:HH:mm");
                         new_date.setTimeZone(TimeZone.getDefault());
                         mDate = new_date.format(parseddate);
                         mTime = mDate.substring(mDate.indexOf(":") + 1);
-                        mDate = mDate.substring(0,mDate.indexOf(":"));
+                        mDate = mDate.substring(0, mDate.indexOf(":"));
 
                         if (!isReal) {
                             //This if statement changes the dummy data's date to match our current date range.
-                            Date fragmentdate = new Date(System.currentTimeMillis()+((i-2)*86400000));
+                            Date fragmentdate = new Date(System.currentTimeMillis() + ((i - 2) * 86400000));
                             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
-                            mDate=mformat.format(fragmentdate);
+                            mDate = mformat.format(fragmentdate);
                         }
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.d(LOG_TAG, "error here!");
                         Log.e(LOG_TAG, e.getMessage());
                     }
@@ -243,15 +240,13 @@ public class FetchScoreService extends IntentService
             ContentValues[] insert_data = new ContentValues[values.size()];
             values.toArray(insert_data);
             int inserted_data = mContext.getContentResolver().bulkInsert(
-                    Constants.BASE_CONTENT_URI,insert_data);
+                    Constants.BASE_CONTENT_URI, insert_data);
 
-            Log.v(LOG_TAG,"Succesfully inserted : " + String.valueOf(inserted_data) + "matches.");
+            Log.v(LOG_TAG, "Succesfully inserted : " + String.valueOf(inserted_data) + "matches.");
+        } catch (JSONException e) {
+            Log.e(LOG_TAG, e.getMessage());
         }
-        catch (JSONException e)
-        {
-            Log.e(LOG_TAG,e.getMessage());
-        }
-
     }
+
 }
 

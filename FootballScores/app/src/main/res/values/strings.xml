@@ -24,6 +24,7 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="version">Version:\u0020</string>
     <string name="not_available">not available.</string>
+    <string name="hashtag">#Football_Scores</string>
     <string name="about_text">
         This application displays football match scores for the Premier League, Seria A, the
         Bundesligas, Primera Division, Segunda Division, the Ligues, Primeira Liga, Eridivisie and

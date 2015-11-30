@@ -15,11 +15,10 @@ import barqsoft.footballscores.DatabaseContract.ScoresTable;
 /**
  * Created by yehya khaled on 2/26/2015. Updates by Erik Reinecke.
  */
+
 public class scoresAdapter extends CursorAdapter
 {
-
     public double detail_match_id = 0;
-    private String FOOTBALL_SCORES_HASHTAG = "#Football_Scores";
     public scoresAdapter(Context context,Cursor cursor,int flags)
     {
         super(context,cursor,flags);
@@ -31,7 +30,6 @@ public class scoresAdapter extends CursorAdapter
         View mItem = LayoutInflater.from(context).inflate(R.layout.scores_list_item, parent, false);
         ViewHolder mHolder = new ViewHolder(mItem);
         mItem.setTag(mHolder);
-        // Log.v(FetchScoreTask.LOG_TAG,"new View inflated");
         return mItem;
     }
 
@@ -88,7 +86,8 @@ public class scoresAdapter extends CursorAdapter
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, ShareText + FOOTBALL_SCORES_HASHTAG);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, ShareText +
+                App.getContext().getResources().getString(R.string.hashtag));
         return shareIntent;
     }
 

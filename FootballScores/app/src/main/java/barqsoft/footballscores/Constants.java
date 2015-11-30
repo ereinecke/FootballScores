@@ -28,6 +28,12 @@ public class Constants {
     public static final int EREDIVISIE         = 404;
     public static final int CHAMPIONS2015_2016 = 405;
 
+    // Favorite team.  This should be set in Options, but for now will be hardcoded to FC Barcelona
+    public static final int FAVORITE_TEAM    = 81;
+    public static final int WIDGET_SCORE     = 0; // indices for result array
+    public static final int WIDGET_HOME_TEAM = 1;
+    public static final int WIDGET_AWAY_TEAM = 2;
+
     // URI building blocks
     public static final String CONTENT_AUTHORITY = "barqsoft.footballscores";
     public static final String PATH = "scores";
@@ -52,8 +58,7 @@ public class Constants {
     public static final int MATCHES_WITH_LEAGUE = 101;
     public static final int MATCHES_WITH_ID = 102;
     public static final int MATCHES_WITH_DATE = 103;
+    public static final int MATCHES_WITH_TEAM = 104;
 
     public static final int SCORES_LOADER = 0;
-
-
 }
