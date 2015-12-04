@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.Vector;
 
@@ -31,7 +32,7 @@ import barqsoft.footballscores.R;
  */
 public class FetchScoreService extends IntentService
 {
-    public static final String LOG_TAG = "FetchScoreService";
+    private static final String LOG_TAG = "FetchScoreService";
 
     public FetchScoreService()
     {
@@ -66,7 +67,7 @@ public class FetchScoreService extends IntentService
 
             // Read the input stream into a String
             InputStream inputStream = m_connection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             if (inputStream == null) {
                 // Nothing to do.
                 return;
@@ -78,8 +79,8 @@ public class FetchScoreService extends IntentService
                 // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
                 // But it does make debugging a *lot* easier if you print out the completed
                 // buffer for debugging.
-                Log.d(LOG_TAG, "JSON: " + line);
-                buffer.append(line + "\n");
+                // Log.d(LOG_TAG, "JSON: " + line);
+                buffer.append(line).append("\n");
             }
             if (buffer.length() == 0) {
                 // Stream was empty.  No point in parsing.
@@ -140,20 +141,20 @@ public class FetchScoreService extends IntentService
         //Match data
         int league;
         String leagueStr;
-        String mDate = null;
-        String mTime = null;
-        String Home = null;
-        String Away = null;
-        String Home_goals = null;
-        String Away_goals = null;
-        String match_id = null;
-        String match_day = null;
+        String mDate;
+        String mTime;
+        String Home;
+        String Away;
+        String Home_goals;
+        String Away_goals;
+        String match_id;
+        String match_day;
 
         try {
             JSONArray matches = new JSONObject(JSONdata).getJSONArray(Constants.FIXTURES);
 
             //ContentValues to be inserted
-            Vector<ContentValues> values = new Vector<ContentValues>(matches.length());
+            Vector<ContentValues> values = new Vector<>(matches.length());
             for (int i = 0; i < matches.length(); i++) {
 
                 JSONObject match_data = matches.getJSONObject(i);
@@ -161,7 +162,7 @@ public class FetchScoreService extends IntentService
                         .getJSONObject(Constants.SOCCER_SEASON).getString("href");
                 // league has to be an int to compare with constant definitions
                 league = Integer.parseInt(leagueStr.replace(Constants.SEASON_LINK, ""));
-                Log.d(LOG_TAG, "league: " + league);
+                // Log.d(LOG_TAG, "league: " + league);
 
                 // This if statement controls which leagues we're interested in the data from.
                 // If you are finding no data in the app, check that this contains all the leagues.
@@ -191,21 +192,26 @@ public class FetchScoreService extends IntentService
                     mDate = match_data.getString(Constants.MATCH_DATE);
                     mTime = mDate.substring(mDate.indexOf("T") + 1, mDate.indexOf("Z"));
                     mDate = mDate.substring(0, mDate.indexOf("T"));
-                    SimpleDateFormat match_date = new SimpleDateFormat("yyyy-MM-ddHH:mm:ss");
+                    SimpleDateFormat match_date = new SimpleDateFormat("yyyy-MM-ddHH:mm:ss",
+                            Locale.getDefault());
                     match_date.setTimeZone(TimeZone.getTimeZone("UTC"));
 
                     try {
-                        Date parseddate = match_date.parse(mDate + mTime);
-                        SimpleDateFormat new_date = new SimpleDateFormat("yyyy-MM-dd:HH:mm");
+                        Date parsedDate = match_date.parse(mDate + mTime);
+                        SimpleDateFormat new_date = new SimpleDateFormat("yyyy-MM-dd:HH:mm",
+                            Locale.getDefault());
                         new_date.setTimeZone(TimeZone.getDefault());
-                        mDate = new_date.format(parseddate);
+                        mDate = new_date.format(parsedDate);
                         mTime = mDate.substring(mDate.indexOf(":") + 1);
                         mDate = mDate.substring(0, mDate.indexOf(":"));
 
                         if (!isReal) {
-                            //This if statement changes the dummy data's date to match our current date range.
-                            Date fragmentdate = new Date(System.currentTimeMillis() + ((i - 2) * 86400000));
-                            SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+                            // This if statement changes the dummy data's date to match our
+                            // current date range.
+                            Date fragmentdate = new Date(System.currentTimeMillis() +
+                                    ((i - 2) * 86400000));
+                            SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd",
+                                    Locale.getDefault());
                             mDate = mformat.format(fragmentdate);
                         }
                     } catch (Exception e) {
@@ -221,7 +227,7 @@ public class FetchScoreService extends IntentService
                             getString(Constants.AWAY_GOALS);
                     match_day = match_data.getString(Constants.MATCH_DAY);
                     ContentValues match_values = new ContentValues();
-                    match_values.put(ScoresTable.MATCH_ID, match_id);
+                    match_values.put(ScoresTable.MATCH_ID_COL, match_id);
                     match_values.put(ScoresTable.DATE_COL, mDate);
                     match_values.put(ScoresTable.TIME_COL, mTime);
                     match_values.put(ScoresTable.HOME_COL, Home);
@@ -229,7 +235,7 @@ public class FetchScoreService extends IntentService
                     match_values.put(ScoresTable.HOME_GOALS_COL, Home_goals);
                     match_values.put(ScoresTable.AWAY_GOALS_COL, Away_goals);
                     match_values.put(ScoresTable.LEAGUE_COL, league);
-                    match_values.put(ScoresTable.MATCH_DAY, match_day);
+                    match_values.put(ScoresTable.MATCH_DAY_COL, match_day);
 
                     // Log.v(LOG_TAG,match_id + "; " + mDate + "; " + mTime + "; " + Home  + "; " +
                     //       Away + "; " + Home_goals + "; " + Away_goals);
@@ -242,7 +248,7 @@ public class FetchScoreService extends IntentService
             int inserted_data = mContext.getContentResolver().bulkInsert(
                     Constants.BASE_CONTENT_URI, insert_data);
 
-            Log.v(LOG_TAG, "Succesfully inserted : " + String.valueOf(inserted_data) + "matches.");
+            Log.v(LOG_TAG, "Succesfully inserted : " + String.valueOf(inserted_data) + " matches.");
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage());
         }

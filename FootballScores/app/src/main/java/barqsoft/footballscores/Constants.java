@@ -29,30 +29,28 @@ public class Constants {
     public static final int CHAMPIONS2015_2016 = 405;
 
     // Favorite team.  This should be set in Options, but for now will be hardcoded to FC Barcelona
-    public static final int FAVORITE_TEAM    = 81;
-    public static final int WIDGET_SCORE     = 0; // indices for result array
-    public static final int WIDGET_HOME_TEAM = 1;
-    public static final int WIDGET_AWAY_TEAM = 2;
+    public static final String FAVORITE_TEAM   = "FC Barcelona";
+    // public static final String FAVORITE_TEAM   = "Toulouse FC";
 
     // URI building blocks
     public static final String CONTENT_AUTHORITY = "barqsoft.footballscores";
+    public static final Uri BASE_CONTENT_URI     = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final String PATH = "scores";
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static final String SEASON_LINK = "http://api.football-data.org/alpha/soccerseasons/";
-    public static final String MATCH_LINK = "http://api.football-data.org/alpha/fixtures/";
-    public static final String FIXTURES = "fixtures";
-    public static final String LINKS = "_links";
+    public static final String MATCH_LINK  = "http://api.football-data.org/alpha/fixtures/";
+    public static final String FIXTURES    = "fixtures";
+    public static final String LINKS       = "_links";
     public static final String SOCCER_SEASON = "soccerseason";
-    public static final String SELF = "self";
+    public static final String SELF        = "self";
     public static final String QUERY_TIME_FRAME = "timeFrame";
-    public static final String MATCH_DATE = "date";
-    public static final String HOME_TEAM = "homeTeamName";
-    public static final String AWAY_TEAM = "awayTeamName";
-    public static final String RESULT = "result";
-    public static final String HOME_GOALS = "goalsHomeTeam";
-    public static final String AWAY_GOALS = "goalsAwayTeam";
-    public static final String MATCH_DAY = "matchday";
+    public static final String MATCH_DATE  = "date";
+    public static final String HOME_TEAM   = "homeTeamName";
+    public static final String AWAY_TEAM   = "awayTeamName";
+    public static final String RESULT      = "result";
+    public static final String HOME_GOALS  = "goalsHomeTeam";
+    public static final String AWAY_GOALS  = "goalsAwayTeam";
+    public static final String MATCH_DAY   = "matchday";
 
     public static final int MATCHES = 100;
     public static final int MATCHES_WITH_LEAGUE = 101;

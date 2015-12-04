@@ -7,7 +7,7 @@
         android:id="@+id/about_version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start|left"
+        android:gravity="start"
         android:textSize="@dimen/abc_text_size_medium_material"
         android:textAlignment="textStart"
         android:elevation="24dp"
@@ -24,7 +24,7 @@
         <TextView android:text="@string/about_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="start|left"
+            android:gravity="start"
             android:textSize="@dimen/abc_text_size_medium_material"
             android:textAlignment="textStart"
             android:padding="@dimen/activity_horizontal_margin" />

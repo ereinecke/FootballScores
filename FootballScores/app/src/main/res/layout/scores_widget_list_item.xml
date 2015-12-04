@@ -11,27 +11,32 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <LinearLayout
             android:orientation="horizontal" android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp">
+            android:layout_height="0dp"
+            android:paddingTop="5dp"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/widget_home_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="@dimen/TeamNames"
+                android:textSize="@dimen/widget_TeamNames"
                 android:gravity="center"
-                android:text="Home Team"
+                android:text="@string/home_team"
                 android:textColor="@android:color/black"
                 android:paddingLeft="4dp"
                 android:paddingStart="4dp"
+                android:paddingRight="4dp"
+                android:paddingEnd="4dp"
                 android:layout_weight="1"
-                android:ellipsize="marquee" />
+                android:ellipsize="marquee"
+                android:paddingBottom="4dp"
+                android:textIsSelectable="false" />
 
             <TextView
                 android:id="@+id/widget_away_name"
@@ -39,38 +44,32 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Away Team"
-                android:textSize="@dimen/TeamNames"
+                android:text="@string/away_team"
+                android:textSize="@dimen/widget_TeamNames"
                 android:textColor="@android:color/black"
+                android:paddingLeft="4dp"
                 android:paddingStart="4dp"
                 android:paddingRight="4dp"
+                android:paddingEnd="4dp"
                 android:layout_weight="1"
                 android:allowUndo="true"
-                android:paddingLeft="4dp"
                 android:ellipsize="marquee" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <TextView
-                android:id="@+id/widget_score_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="0 - 1"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="@dimen/Score"
-                android:textColor="@android:color/black" />
-
-        </LinearLayout>
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/widget_score_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/dummy_score"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/widget_Score"
+        android:textColor="@android:color/black"
+        android:layout_weight="1"
+        android:textStyle="bold" />
 
 </LinearLayout>
 

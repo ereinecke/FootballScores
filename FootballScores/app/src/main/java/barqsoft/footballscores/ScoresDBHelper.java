@@ -9,9 +9,9 @@ import barqsoft.footballscores.DatabaseContract.ScoresTable;
 /**
  * Created by yehya khaled on 2/25/2015.
  */
-public class ScoresDBHelper extends SQLiteOpenHelper
+class ScoresDBHelper extends SQLiteOpenHelper
 {
-    public static final String DATABASE_NAME = "Scores.db";
+    private static final String DATABASE_NAME = "Scores.db";
     private static final int DATABASE_VERSION = 2;
     public ScoresDBHelper(Context context)
     {
@@ -30,9 +30,9 @@ public class ScoresDBHelper extends SQLiteOpenHelper
                 + ScoresTable.LEAGUE_COL + " INTEGER NOT NULL,"
                 + ScoresTable.HOME_GOALS_COL + " TEXT NOT NULL,"
                 + ScoresTable.AWAY_GOALS_COL + " TEXT NOT NULL,"
-                + ScoresTable.MATCH_ID + " INTEGER NOT NULL,"
-                + ScoresTable.MATCH_DAY + " INTEGER NOT NULL,"
-                + " UNIQUE (" + ScoresTable.MATCH_ID+") ON CONFLICT REPLACE"
+                + ScoresTable.MATCH_ID_COL + " INTEGER NOT NULL,"
+                + ScoresTable.MATCH_DAY_COL + " INTEGER NOT NULL,"
+                + " UNIQUE (" + ScoresTable.MATCH_ID_COL+") ON CONFLICT REPLACE"
                 + " );";
         db.execSQL(CreateScoresTable);
     }

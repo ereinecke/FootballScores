@@ -16,10 +16,11 @@ import barqsoft.footballscores.DatabaseContract.ScoresTable;
  * Created by yehya khaled on 2/26/2015. Updates by Erik Reinecke.
  */
 
-public class scoresAdapter extends CursorAdapter
+public class ScoresAdapter extends CursorAdapter
 {
     public double detail_match_id = 0;
-    public scoresAdapter(Context context,Cursor cursor,int flags)
+
+    public ScoresAdapter(Context context, Cursor cursor, int flags)
     {
         super(context,cursor,flags);
     }
@@ -39,7 +40,7 @@ public class scoresAdapter extends CursorAdapter
         final ViewHolder mHolder = (ViewHolder) view.getTag();
         mHolder.home_name.setText(cursor.getString(ScoresTable.COL_HOME));
         mHolder.away_name.setText(cursor.getString(ScoresTable.COL_AWAY));
-        mHolder.date.setText(cursor.getString(ScoresTable.COL_MATCHTIME));
+        mHolder.date.setText(cursor.getString(ScoresTable.COL_TIME));
         mHolder.score.setText(Utilities.getScores(cursor.getInt(ScoresTable.COL_HOME_GOALS),
                 cursor.getInt(ScoresTable.COL_AWAY_GOALS)));
         mHolder.match_id = cursor.getDouble(ScoresTable.COL_ID);
@@ -80,9 +81,9 @@ public class scoresAdapter extends CursorAdapter
         {
             container.removeAllViews();
         }
-
     }
-    public Intent createShareForecastIntent(String ShareText) {
+
+    private Intent createShareForecastIntent(String ShareText) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");

@@ -56,7 +56,7 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
      */
     public int getCount() {
         return -1; // TODO: this is a placeholder
-    };
+    }
 
     /**
      * See {@link Adapter#getView(int, android.view.View, android.view.ViewGroup)}.

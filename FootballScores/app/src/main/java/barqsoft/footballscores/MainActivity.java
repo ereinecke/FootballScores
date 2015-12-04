@@ -2,7 +2,7 @@ package barqsoft.footballscores;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +12,7 @@ import android.view.MenuItem;
  */
 
 // public class MainActivity extends Activity
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
 {
     public static int selected_match_id;
     public static int current_fragment = 2;
@@ -54,6 +54,7 @@ public class MainActivity extends ActionBarActivity
             startActivity(start_about);
             return true;
         }
+        // TODO: set favorite team for widget display purposes
 
         return super.onOptionsItemSelected(item);
     }
