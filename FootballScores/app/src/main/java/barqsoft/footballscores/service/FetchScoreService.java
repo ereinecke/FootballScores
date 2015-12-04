@@ -32,7 +32,7 @@ import barqsoft.footballscores.R;
  */
 public class FetchScoreService extends IntentService
 {
-    private static final String LOG_TAG = "FetchScoreService";
+    private static final String LOG_TAG = FetchScoreService.class.getSimpleName();
 
     public FetchScoreService()
     {

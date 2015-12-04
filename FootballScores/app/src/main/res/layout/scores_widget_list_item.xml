@@ -6,7 +6,12 @@
     android:id="@+id/scores_widget_list_item"
     android:elevation="4dp"
     android:background="@drawable/list_item"
-    >
+    android:paddingLeft="8dp"
+    android:paddingTop="4dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="4dp"
+    android:paddingEnd="8dp"
+    android:paddingStart="8dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -57,19 +62,53 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/widget_score_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="@string/dummy_score"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="@dimen/widget_Score"
-        android:textColor="@android:color/black"
-        android:layout_weight="1"
-        android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_date"
+                android:id="@+id/widget_date"
+                android:layout_gravity="center"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/widget_score_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_score"
+                android:layout_gravity="center"
+                android:minEms="5"
+                android:gravity="center"
+                android:textSize="@dimen/widget_Score"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/widget_league"
+                android:id="@+id/widget_league"
+                android:layout_gravity="center"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:ellipsize="marquee"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
 

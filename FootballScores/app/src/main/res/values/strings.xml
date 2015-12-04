@@ -11,6 +11,8 @@
     <string name="home_team">Home Team</string>
     <string name="away_team">Away Team</string>
     <string name="dummy_score">21 - 17</string>
+    <string name="widget_date">Yesterday</string>
+    <string name="widget_league">La Liga</string>
     <string name="matchday_text">Match day</string>
     <string name="group_stage_text">Group stages</string>
     <string name="first_knockout_round">First knockout round</string>

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity
 {
     public static int selected_match_id;
     public static int current_fragment = 2;
-    private static final String LOG_TAG  = "MainActivity";
+    private static final String LOG_TAG  = MainActivity.class.getSimpleName();
     private static final String SAVE_TAG = "Save Test";
     private PagerFragment my_main;
 

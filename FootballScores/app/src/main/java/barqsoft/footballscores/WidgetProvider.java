@@ -9,6 +9,10 @@ import android.database.Cursor;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /* WidgetProvider for Football Scores widget
  *
  * Created by Erik Reinecke on 11/24/15.
@@ -31,10 +35,10 @@ public class WidgetProvider extends AppWidgetProvider {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.scores_widget_list_item);
 
-            // Update widget.  Currently, this will show the most recent completed match.
-            // TODO: Show latest score for favorite team
+            // Update widget with the most recent score for FAVORITE_TEAM or most recent completed
+            // match.
             Cursor latestMatch = getLatestMatch(Constants.FAVORITE_TEAM);
-            // logCursor(latestMatch, 0);
+            logCursor(latestMatch, latestMatch.getPosition());
             remoteViews.setTextViewText(R.id.widget_home_name,
                     latestMatch.getString(DatabaseContract.ScoresTable.COL_HOME));
             remoteViews.setTextViewText(R.id.widget_away_name,
@@ -42,8 +46,15 @@ public class WidgetProvider extends AppWidgetProvider {
             remoteViews.setTextViewText(R.id.widget_score_textview,
                     Utilities.getScores(latestMatch.getInt(DatabaseContract.ScoresTable.COL_HOME_GOALS),
                             latestMatch.getInt(DatabaseContract.ScoresTable.COL_AWAY_GOALS)));
+            remoteViews.setTextViewText(R.id.widget_league,
+                    Utilities.getLeague(latestMatch.getInt(DatabaseContract.ScoresTable.COL_LEAGUE)));
 
-            Log.d(LOG_TAG, "Calling setOnClickPendingIntent");
+
+            long dateInMillis = dateToMillis(App.getContext(),
+                    latestMatch.getString(DatabaseContract.ScoresTable.COL_DATE));
+            String dayName = Utilities.getDayName(App.getContext(), dateInMillis);
+            remoteViews.setTextViewText(R.id.widget_date, dayName);
+
             remoteViews.setOnClickPendingIntent(R.id.scores_widget_list_item, pendingIntent);
 
             // Tell the AppWidgetManager to perform an update on the current app widget
@@ -61,23 +72,15 @@ public class WidgetProvider extends AppWidgetProvider {
 
         // Get most recent match with a score
         if (retCursor != null) {
-            Log.d(LOG_TAG + "Cursor size: ", Integer.toString(retCursor.getCount()));
             retCursor.moveToFirst();
-            Log.d(LOG_TAG, "Position: " + retCursor.getPosition() + "; Home score: \"" +
-                    retCursor.getString(DatabaseContract.ScoresTable.COL_HOME_GOALS) + "\"");
             while (retCursor.getString(DatabaseContract.ScoresTable.COL_HOME_GOALS).equals("-1")) {
-                Log.d(LOG_TAG, "Position: " + retCursor.getPosition() + "; Home score: " +
-                    retCursor.getString(DatabaseContract.ScoresTable.COL_HOME_GOALS));
                 if (!retCursor.moveToNext()) break;
             }
             // if we don't find favorite team, use most recently completed match
             int lastMatch = retCursor.getPosition();
-            Log.d(LOG_TAG, "LatestMatch position = " + retCursor.getPosition());
             // now look for last match with favorite team
             while (!retCursor.getString(DatabaseContract.ScoresTable.COL_HOME).equals(team) &&
                    !retCursor.getString(DatabaseContract.ScoresTable.COL_AWAY).equals(team)) {
-                Log.d(LOG_TAG, "Teams: " + retCursor.getString(DatabaseContract.ScoresTable.COL_HOME) +
-                   " v. " + retCursor.getString(DatabaseContract.ScoresTable.COL_AWAY));
                 if (!retCursor.isLast()) {
 
                     retCursor.moveToNext();
@@ -86,8 +89,6 @@ public class WidgetProvider extends AppWidgetProvider {
                     break;
                 }
             }
-            Log.d(LOG_TAG, "cursor position: " + retCursor.getPosition());
-            logCursor(retCursor, retCursor.getPosition());
         } else Log.d(LOG_TAG, "Latest Match: null");
 
         return retCursor;
@@ -101,25 +102,44 @@ public class WidgetProvider extends AppWidgetProvider {
         }
         else if (position < 0) { // log all
             cursor.moveToFirst();
-            Log.d(LOG_TAG, "Logging all cursor entries. (Position: " + position + ")" );
+            // Log.d(LOG_TAG, "Logging all cursor entries. (Position: " + position + ")" );
             while (!cursor.isLast()) {
                 Log.d(LOG_TAG, "Match date: " +
                     cursor.getString(DatabaseContract.ScoresTable.COL_DATE) +
                     ", " + cursor.getString(DatabaseContract.ScoresTable.COL_HOME) +
                     " v. " + cursor.getString(DatabaseContract.ScoresTable.COL_AWAY) + "; " +
                     Utilities.getScores(cursor.getShort(DatabaseContract.ScoresTable.COL_HOME_GOALS),
-                            cursor.getShort(DatabaseContract.ScoresTable.COL_AWAY_GOALS)));
+                            cursor.getShort(DatabaseContract.ScoresTable.COL_AWAY_GOALS)) + "; " +
+                    Utilities.getLeague(cursor.getShort(DatabaseContract.ScoresTable.COL_LEAGUE)));
                 cursor.moveToNext();
             }
         } else {    // single row
             cursor.moveToPosition(position);
             Log.d(LOG_TAG, "Match date: " +
                     cursor.getString(DatabaseContract.ScoresTable.COL_DATE) +
-                    ", "   + cursor.getString(DatabaseContract.ScoresTable.COL_HOME) +
+                    ", " + cursor.getString(DatabaseContract.ScoresTable.COL_HOME) +
                     " v. " + cursor.getString(DatabaseContract.ScoresTable.COL_AWAY) + "; " +
                     Utilities.getScores(cursor.getShort(DatabaseContract.ScoresTable.COL_HOME_GOALS),
-                            cursor.getShort(DatabaseContract.ScoresTable.COL_AWAY_GOALS)));
-
+                            cursor.getShort(DatabaseContract.ScoresTable.COL_AWAY_GOALS)) + "; " +
+                    Utilities.getLeague(cursor.getShort(DatabaseContract.ScoresTable.COL_LEAGUE)));
         }
     }
+
+    private long dateToMillis(Context context, String date) {
+        // If the date is today, return the localized version of "Today" instead of the actual
+        // day name.
+
+        if (date == null) return -1l;
+        Date day;
+
+        try {
+            day = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1l;
+        }
+
+        return day.getTime();
+    }
+
 }
