@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Marcadores de Fútbol</string>
+    <string name="about">Acerca</string>
+    <string name="action_settings">Configuración</string>
+    <string name="away_team">Equipo de Fuera</string>
+    <string name="final_text">Final</string>
+    <string name="first_knockout_round">Ronda eliminatoria</string>
+    <string name="group_stage_text">Fase de grupos</string>
+    <string name="hashtag">#Marcadores_de_Fútbol</string>
+    <string name="home_team">Equipo de Casa</string>
+    <string name="matchday_text">Jornada</string>
+    <string name="not_available">no disponible.</string>
+    <string name="quarter_final">Cuartos de Final</string>
+    <string name="semi_final">Semifinal</string>
+    <string name="share_text">Compartir</string>
+    <string name="test_text">Prueba</string>
+    <string name="today">Hoy</string>
+    <string name="tomorrow">Mañana</string>
+    <string name="version">Versión: %1$s</string>
+    <string name="widget_date">Ayer</string>
+    <string name="widget_league">La Liga</string>
+    <string name="yesterday">Ayer</string>
+    <string name="about_text">Esta aplicación muestra los marcadores para la Premier League,
+        Serie A, las Bundesligas, Primera División, Segunda División, las Ligues, Primeira Liga,
+        Eridivisie y la UEFA Liga de Campeones.\n  Los datos se obtienen del API de
+        football-data.org.  Fuera de temporada se muestran marcadores simulados.\n  Para reportar
+        defectos o someter sugerencias, favor de comunicarse con erik@ereinecke.com.\n  La versión
+        original de esta aplicación fue creada por Yahia Khalid Ibn El Walid Ahmed, y una versión
+        modificada se da a los estudiantes tomando el curso de Android Nanodegree de Udacity.\n
+        Esta versión incluye actualizaciones por Erik Reinecke.</string>
+</resources>

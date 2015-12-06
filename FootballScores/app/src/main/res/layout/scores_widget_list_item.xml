@@ -69,20 +69,23 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/widget_date"
                 android:id="@+id/widget_date"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:layout_weight="3"
+                android:textAlignment="textStart"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/widget_score_textview"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/dummy_score"
                 android:layout_gravity="center"
@@ -91,21 +94,24 @@
                 android:textSize="@dimen/widget_Score"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:singleLine="true" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/widget_league"
                 android:id="@+id/widget_league"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical|right"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp"
                 android:ellipsize="marquee"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:layout_weight="3"
+                android:textAlignment="textEnd"
+                android:singleLine="true" />
         </LinearLayout>
 
     </LinearLayout>

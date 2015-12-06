@@ -3,7 +3,7 @@
     android:minWidth="180dp"
     android:minHeight="40dp"
     android:updatePeriodMillis="1800000"
-    android:previewImage="@drawable/preview"
+    android:previewImage="@drawable/widget_preview"
     android:initialLayout="@layout/scores_widget_list_item"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen">
