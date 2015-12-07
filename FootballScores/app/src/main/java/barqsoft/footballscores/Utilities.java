@@ -30,37 +30,39 @@ public class Utilities
             case Constants.BUNDESLIGA3 :          return "3. Bundesliga";
             case Constants.EREDIVISIE :           return "Eredivisie";
             case Constants.CHAMPIONS2015_2016 :   return "UEFA Champions League";
-            default: return "Unknown League please report";
+            default: return App.getContext().getString(R.string.unknown_league);
         }
     }
+
     public static String getMatchDay(int match_day,int league_num)
     {
         if(league_num == Constants.CHAMPIONS2015_2016)
         {
             if (match_day <= 6)
             {
-                return "Group Stages, Matchday : 6";
+                return App.getContext().getString(R.string.group_stage_text);
             }
             else if(match_day == 7 || match_day == 8)
             {
-                return "First Knockout round";
+                return App.getContext().getString(R.string.first_knockout_round);
             }
             else if(match_day == 9 || match_day == 10)
             {
-                return "QuarterFinal";
+                return App.getContext().getString(R.string.quarter_final);
             }
             else if(match_day == 11 || match_day == 12)
             {
-                return "SemiFinal";
+                return App.getContext().getString(R.string.semi_final);
             }
             else
             {
-                return "Final";
+                return App.getContext().getString(R.string.final_text);
             }
         }
         else
         {
-            return "Matchday : " + String.valueOf(match_day);
+            return App.getContext().getString(R.string.matchday_text) + " : " +
+                        String.valueOf(match_day);
         }
     }
 

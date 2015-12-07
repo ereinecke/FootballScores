@@ -80,7 +80,7 @@
                 android:paddingLeft="8dp"
                 android:textColor="@android:color/darker_gray"
                 android:layout_weight="3"
-                android:textAlignment="textStart"
+                android:textAlignment="start"
                 android:singleLine="true" />
 
             <TextView
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/widget_league"
                 android:id="@+id/widget_league"
-                android:layout_gravity="center_vertical|right"
+                android:layout_gravity="center_vertical|end"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
                 android:paddingRight="8dp"
@@ -110,7 +110,7 @@
                 android:ellipsize="marquee"
                 android:textColor="@android:color/darker_gray"
                 android:layout_weight="3"
-                android:textAlignment="textEnd"
+                android:textAlignment="end"
                 android:singleLine="true" />
         </LinearLayout>
 

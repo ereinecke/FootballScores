@@ -52,8 +52,8 @@
                 android:text="@string/test_text"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:id="@+id/data_textview"/>
-
+                android:id="@+id/data_textview"
+                android:contentDescription="@string/away_team"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"

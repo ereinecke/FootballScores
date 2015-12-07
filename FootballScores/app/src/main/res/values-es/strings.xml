@@ -29,4 +29,5 @@
         original de esta aplicación fue creada por Yahia Khalid Ibn El Walid Ahmed, y una versión
         modificada se da a los estudiantes tomando el curso de Android Nanodegree de Udacity.\n
         Esta versión incluye actualizaciones por Erik Reinecke.</string>
+    <string name="unknown_league">Liga desconocida, favor de reportar</string>
 </resources>
