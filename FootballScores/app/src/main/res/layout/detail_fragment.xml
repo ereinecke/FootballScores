@@ -40,8 +40,9 @@
         android:drawableStart="@android:drawable/ic_menu_share"
         android:paddingLeft="72dp"
         android:paddingRight="72dp"
-            android:paddingEnd="72dp"
-            android:paddingStart="72dp" />
+        android:paddingEnd="72dp"
+        android:paddingStart="72dp"
+        android:contentDescription="@string/share_text"/>
     </FrameLayout>
 
 </LinearLayout>

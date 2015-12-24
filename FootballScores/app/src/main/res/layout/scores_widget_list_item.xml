@@ -80,7 +80,6 @@
                 android:paddingLeft="8dp"
                 android:textColor="@android:color/darker_gray"
                 android:layout_weight="3"
-                android:textAlignment="start"
                 android:singleLine="true" />
 
             <TextView
@@ -110,7 +109,7 @@
                 android:ellipsize="marquee"
                 android:textColor="@android:color/darker_gray"
                 android:layout_weight="3"
-                android:textAlignment="end"
+                android:textAlignment="textEnd"
                 android:singleLine="true" />
         </LinearLayout>
 
