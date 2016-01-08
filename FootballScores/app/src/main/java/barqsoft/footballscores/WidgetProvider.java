@@ -39,16 +39,17 @@ public class WidgetProvider extends AppWidgetProvider {
             // match.
             Cursor latestMatch = getLatestMatch(Constants.FAVORITE_TEAM);
             logCursor(latestMatch, latestMatch.getPosition());
-            remoteViews.setTextViewText(R.id.widget_home_name,
-                    latestMatch.getString(DatabaseContract.ScoresTable.COL_HOME));
-            remoteViews.setTextViewText(R.id.widget_away_name,
-                    latestMatch.getString(DatabaseContract.ScoresTable.COL_AWAY));
-            remoteViews.setTextViewText(R.id.widget_score_textview,
-                    Utilities.getScores(latestMatch.getInt(DatabaseContract.ScoresTable.COL_HOME_GOALS),
-                            latestMatch.getInt(DatabaseContract.ScoresTable.COL_AWAY_GOALS)));
-            remoteViews.setTextViewText(R.id.widget_league,
-                    Utilities.getLeague(latestMatch.getInt(DatabaseContract.ScoresTable.COL_LEAGUE)));
-
+            if (latestMatch.getCount() > 0) {
+                remoteViews.setTextViewText(R.id.widget_home_name,
+                        latestMatch.getString(DatabaseContract.ScoresTable.COL_HOME));
+                remoteViews.setTextViewText(R.id.widget_away_name,
+                        latestMatch.getString(DatabaseContract.ScoresTable.COL_AWAY));
+                remoteViews.setTextViewText(R.id.widget_score_textview,
+                        Utilities.getScores(latestMatch.getInt(DatabaseContract.ScoresTable.COL_HOME_GOALS),
+                                latestMatch.getInt(DatabaseContract.ScoresTable.COL_AWAY_GOALS)));
+                remoteViews.setTextViewText(R.id.widget_league,
+                        Utilities.getLeague(latestMatch.getInt(DatabaseContract.ScoresTable.COL_LEAGUE)));
+            }
 
             long dateInMillis = dateToMillis(App.getContext(),
                     latestMatch.getString(DatabaseContract.ScoresTable.COL_DATE));

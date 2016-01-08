@@ -7,6 +7,8 @@ import android.net.Uri;
  * Exceptions: DatabaseContract.java contains db field names; LOG_TAGS
  */
 public class Constants {
+    public static final String API_KEY = "";
+
     // Number of days in the past and future to request.  Number of pager fragments must agree.
     // NOTE: if PAST_DAYS or FUTURE_DAYS are greater than 6, the fragment label in
     // PagerFragment.GetPageTitle will have to be updated to display date rather than day of week
