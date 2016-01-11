@@ -90,7 +90,7 @@ public class FetchScoreService extends IntentService
         }
         catch (Exception e)
         {
-            Log.e(LOG_TAG,"Exception here" + e.getMessage());
+            Log.e(LOG_TAG,"Exception here: " + e.getMessage());
         }
         finally {
             if(m_connection != null)

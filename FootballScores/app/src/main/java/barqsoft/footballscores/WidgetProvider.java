@@ -37,6 +37,8 @@ public class WidgetProvider extends AppWidgetProvider {
 
             // Update widget with the most recent score for FAVORITE_TEAM or most recent completed
             // match.
+            // TODO:  Fix the following defect: the most recent match for favorite team may have
+            // no score if the last time the program was run, the match was in the future.
             Cursor latestMatch = getLatestMatch(Constants.FAVORITE_TEAM);
             logCursor(latestMatch, latestMatch.getPosition());
             if (latestMatch.getCount() > 0) {

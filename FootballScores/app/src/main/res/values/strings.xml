@@ -23,6 +23,20 @@
     <string name="version">Version: %1$s</string>
     <string name="not_available">not available.</string>
     <string name="hashtag">#Football_Scores</string>
+
+    <string name="bundesliga_1">1. Bundesliga</string>
+    <string name="bundesliga_2">2. Bundesliga</string>
+    <string name="ligue_1">Ligue 1</string>
+    <string name="ligue_2">Ligue 2</string>
+    <string name="premier_league">Premier League</string>
+    <string name="primera_division">Primera División</string>
+    <string name="segunda_division">Segunda División</string>
+    <string name="serie_a">Serie A</string>
+    <string name="primeira_liga">Primeira Liga</string>
+    <string name="bundesliga_3">3. Bundesliga</string>
+    <string name="eredivisie">Eredivisie</string>
+    <string name="uefa_champions_league">UEFA Champions League</string>
+
     <string name="unknown_league">Unknown League, please report</string>
     <string name="about_text">
         This application displays football match scores for the Premier League, Seria A, the

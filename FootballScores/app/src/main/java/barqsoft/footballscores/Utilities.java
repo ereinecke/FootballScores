@@ -2,6 +2,7 @@ package barqsoft.footballscores;
 
 import android.content.Context;
 import android.text.format.Time;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -15,21 +16,34 @@ public class Utilities
 
     public static String getLeague(int league_num)
     {
+        Log.d(LOG_TAG, "League#: " + league_num);
         switch (league_num)
         {
             // Added all leagues supported by the API
-            case Constants.BUNDESLIGA1 :          return "1. Bundesliga";
-            case Constants.BUNDESLIGA2 :          return "2. Bundesliga";
-            case Constants.LIGUE1 :               return "Ligue 1";
-            case Constants.LIGUE2 :               return "Ligue 2";
-            case Constants.PREMIER_LEAGUE:        return "Premier League";
-            case Constants.PRIMERA_DIVISION :     return "Primera Division";
-            case Constants.SEGUNDA_DIVISION :     return "Segunda Division";
-            case Constants.SERIE_A :              return "Serie A";
-            case Constants.PRIMEIRA_LIGA :        return "Primeira Liga";
-            case Constants.BUNDESLIGA3 :          return "3. Bundesliga";
-            case Constants.EREDIVISIE :           return "Eredivisie";
-            case Constants.CHAMPIONS2015_2016 :   return "UEFA Champions League";
+            case Constants.BUNDESLIGA1 :
+                return App.getContext().getString(R.string.bundesliga_1);
+            case Constants.BUNDESLIGA2 :
+                return App.getContext().getString(R.string.bundesliga_2);
+            case Constants.BUNDESLIGA3 :
+                return App.getContext().getString(R.string.bundesliga_3);
+            case Constants.LIGUE1 :
+                return App.getContext().getString(R.string.ligue_1);
+            case Constants.LIGUE2 :
+                return App.getContext().getString(R.string.ligue_2);
+            case Constants.PREMIER_LEAGUE:
+                return App.getContext().getString(R.string.premier_league);
+            case Constants.PRIMERA_DIVISION :
+                return App.getContext().getString(R.string.primera_division);
+            case Constants.SEGUNDA_DIVISION :
+                return App.getContext().getString(R.string.segunda_division);
+            case Constants.SERIE_A :
+                return App.getContext().getString(R.string.serie_a);
+            case Constants.PRIMEIRA_LIGA :
+                return App.getContext().getString(R.string.primeira_liga);
+            case Constants.EREDIVISIE :
+                return App.getContext().getString(R.string.eredivisie);
+            case Constants.CHAMPIONS2015_2016 :
+                return App.getContext().getString(R.string.uefa_champions_league);
             default: return App.getContext().getString(R.string.unknown_league);
         }
     }

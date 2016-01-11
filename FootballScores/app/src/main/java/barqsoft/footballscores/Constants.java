@@ -32,7 +32,7 @@ public class Constants {
 
     // Favorite team.  This should be set in Options, but for now will be hardcoded to FC Barcelona
     public static final String FAVORITE_TEAM   = "FC Barcelona";
-    // public static final String FAVORITE_TEAM   = "EA Guingamp";
+    // public static final String FAVORITE_TEAM   = "Atalanta BC";
 
     // URI building blocks
     public static final String CONTENT_AUTHORITY = "barqsoft.footballscores";
