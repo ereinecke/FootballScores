@@ -20,38 +20,57 @@ public class Utilities
         switch (league_num)
         {
             // Added all leagues supported by the API
-            case Constants.BUNDESLIGA1 :
+            case Constants.BUNDESLIGA_1 :
                 return App.getContext().getString(R.string.bundesliga_1);
-            case Constants.BUNDESLIGA2 :
+            case Constants.BUNDESLIGA_2 :
                 return App.getContext().getString(R.string.bundesliga_2);
-            case Constants.BUNDESLIGA3 :
-                return App.getContext().getString(R.string.bundesliga_3);
-            case Constants.LIGUE1 :
+            case Constants.LIGUE_1 :
                 return App.getContext().getString(R.string.ligue_1);
-            case Constants.LIGUE2 :
+            case Constants.LIGUE_2 :
                 return App.getContext().getString(R.string.ligue_2);
             case Constants.PREMIER_LEAGUE:
                 return App.getContext().getString(R.string.premier_league);
+            case Constants.ENGLISH_NATIONAL :
+                return App.getContext().getString(R.string.english_national);
+            case Constants.LEAGUE_ONE :
+                return App.getContext().getString(R.string.league_one);
+            case Constants.LEAGUE_TWO :
+                return App.getContext().getString(R.string.league_two);
             case Constants.PRIMERA_DIVISION :
                 return App.getContext().getString(R.string.primera_division);
             case Constants.SEGUNDA_DIVISION :
                 return App.getContext().getString(R.string.segunda_division);
             case Constants.SERIE_A :
                 return App.getContext().getString(R.string.serie_a);
+            case Constants.SERIE_B :
+                return App.getContext().getString(R.string.serie_b);
             case Constants.PRIMEIRA_LIGA :
                 return App.getContext().getString(R.string.primeira_liga);
             case Constants.EREDIVISIE :
                 return App.getContext().getString(R.string.eredivisie);
-            case Constants.CHAMPIONS2015_2016 :
+            case Constants.EUROCHAMP2016 :
                 return App.getContext().getString(R.string.uefa_champions_league);
+            case Constants.CHAMP_2016_17 :
+                return App.getContext().getString(R.string.euro_champions_league);
+            case Constants.FA_CUP_2016_17 :
+                return App.getContext().getString(R.string.fa_cup);
+            case Constants.DFB_POKAL_2016_17 :
+                return App.getContext().getString(R.string.dfb_pokal);
+            case Constants.CHAMPIONS_2016_17 :
+                return App.getContext().getString(R.string.champions_league);
             default: return App.getContext().getString(R.string.unknown_league);
         }
     }
 
     public static String getMatchDay(int match_day,int league_num)
     {
-        if(league_num == Constants.CHAMPIONS2015_2016)
-        {
+        // If the 'league' is really a tournament, get the tournament stage
+        if ((league_num == Constants.EUROCHAMP2016)     ||
+            (league_num == Constants.CHAMP_2016_17)     ||
+            (league_num == Constants.FA_CUP_2016_17)    ||
+            (league_num == Constants.CHAMPIONS_2016_17) ||
+            (league_num == Constants.DFB_POKAL_2016_17))   {
+
             if (match_day <= 6)
             {
                 return App.getContext().getString(R.string.group_stage_text);

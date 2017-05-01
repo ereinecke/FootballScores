@@ -167,18 +167,28 @@ public class FetchScoreService extends IntentService
                 // This if statement controls which leagues we're interested in the data from.
                 // If you are finding no data in the app, check that this contains all the leagues.
                 // If it doesn't, that can cause an empty DB, bypassing the dummy data routine.
-                if (league == Constants.BUNDESLIGA1 ||
-                        league == Constants.BUNDESLIGA2 ||
-                        league == Constants.LIGUE1 ||
-                        league == Constants.LIGUE2 ||
-                        league == Constants.PREMIER_LEAGUE ||
-                        league == Constants.PRIMERA_DIVISION ||
-                        league == Constants.SEGUNDA_DIVISION ||
-                        league == Constants.SERIE_A ||
-                        league == Constants.PRIMEIRA_LIGA ||
-                        league == Constants.BUNDESLIGA3 ||
-                        league == Constants.EREDIVISIE ||
-                        league == Constants.CHAMPIONS2015_2016) {
+                // Note that these refer to seasons or competitions, so they change from time
+                // to time.
+
+                if (league == Constants.EUROCHAMP2016         ||
+                        league == Constants.PREMIER_LEAGUE    ||
+                        league == Constants.CHAMP_2016_17     ||
+                        league == Constants.LEAGUE_ONE        ||
+                        league == Constants.FA_CUP_2016_17    ||
+                        league == Constants.BUNDESLIGA_1      ||
+                        league == Constants.BUNDESLIGA_2      ||
+                        league == Constants.DFB_POKAL_2016_17 ||
+                        league == Constants.EREDIVISIE        ||
+                        league == Constants.LIGUE_1           ||
+                        league == Constants.LIGUE_2           ||
+                        league == Constants.PRIMERA_DIVISION  ||
+                        league == Constants.SEGUNDA_DIVISION  ||
+                        league == Constants.SERIE_A           ||
+                        league == Constants.PRIMEIRA_LIGA     ||
+                        league == Constants.CHAMPIONS_2016_17 ||
+                        league == Constants.SERIE_B           ||
+                        league == Constants.ENGLISH_NATIONAL  ||
+                        league == Constants.LEAGUE_TWO)            {
                     match_id = match_data.getJSONObject(Constants.LINKS)
                             .getJSONObject(Constants.SELF).getString("href");
                     match_id = match_id.replace(Constants.MATCH_LINK, "");
@@ -237,8 +247,8 @@ public class FetchScoreService extends IntentService
                     match_values.put(ScoresTable.LEAGUE_COL, league);
                     match_values.put(ScoresTable.MATCH_DAY_COL, match_day);
 
-                    // Log.v(LOG_TAG,match_id + "; " + mDate + "; " + mTime + "; " + Home  + "; " +
-                    //       Away + "; " + Home_goals + "; " + Away_goals);
+                    Log.v(LOG_TAG,match_id + "; " + mDate + "; " + mTime + "; " + Home  + "; " +
+                          Away + "; " + Home_goals + "; " + Away_goals);
 
                     values.add(match_values);
                 }

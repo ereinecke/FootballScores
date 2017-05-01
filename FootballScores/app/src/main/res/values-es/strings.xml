@@ -30,4 +30,7 @@
         modificada se da a los estudiantes tomando el curso de Android Nanodegree de Udacity.\n
         Esta versión incluye actualizaciones por Erik Reinecke.</string>
     <string name="unknown_league">Liga desconocida, favor de reportar</string>
+    <string name="dfb_pokal">Copa Alemana</string>
+    <string name="english_national">Nacionál Inglesa</string>
+    <string name="fa_cup">Copa FA</string>
 </resources>

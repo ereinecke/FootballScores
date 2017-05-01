@@ -24,24 +24,30 @@
     <string name="not_available">not available.</string>
     <string name="hashtag">#Football_Scores</string>
 
-    <string name="bundesliga_1">1. Bundesliga</string>
-    <string name="bundesliga_2">2. Bundesliga</string>
-    <string name="ligue_1">Ligue 1</string>
-    <string name="ligue_2">Ligue 2</string>
-    <string name="premier_league">Premier League</string>
-    <string name="primera_division">Primera División</string>
-    <string name="segunda_division">Segunda División</string>
-    <string name="serie_a">Serie A</string>
-    <string name="primeira_liga">Primeira Liga</string>
-    <string name="bundesliga_3">3. Bundesliga</string>
-    <string name="eredivisie">Eredivisie</string>
+    <string name="bundesliga_1" translatable="false">1. Bundesliga</string>
+    <string name="bundesliga_2" translatable="false">2. Bundesliga</string>
+    <string name="ligue_1" translatable="false">Ligue 1</string>
+    <string name="ligue_2" translatable="false">Ligue 2</string>
+    <string name="premier_league" translatable="false">Premier League</string>
+    <string name="primera_division" translatable="false">Primera División</string>
+    <string name="segunda_division" translatable="false">Segunda División</string>
+    <string name="serie_a" translatable="false">Serie A</string>
+    <string name="primeira_liga" translatable="false">Primeira Liga</string>
+    <string name="bundesliga_3" translatable="false">3. Bundesliga</string>
+    <string name="eredivisie" translatable="false">Eredivisie</string>
+    <string name="league_one">League One</string>
     <string name="uefa_champions_league">UEFA Champions League</string>
+    <string name="euro_champions_league" translatable="false">Euro Champions League</string>
+    <string name="fa_cup">FA Cup</string>
+    <string name="dfb_pokal">DFB-Pokal</string>
+    <string name="serie_b" translatable="false">Serie B</string>
+    <string name="english_national">English National</string>
 
     <string name="unknown_league">Unknown League, please report</string>
     <string name="about_text">
         This application displays football match scores for the Premier League, Seria A, the
-        Bundesligas, Primera Division, Segunda Division, the Ligues, Primeira Liga, Eridivisie and
-        the UEFA Champions League.\n
+        Bundesligas, Primera Division, Segunda Division, the Ligues, Primeira Liga, Eridivisie,
+        DFB-Polka (German Cup), FA Cup, Euro Cup and the UEFA Champions League.\n
         All match data are acquired from football-data.org API.  During the off-season, fake data
         will be added to the app.\n
         All team logos are acquired from http://hdlogo.wordpress.com/ upon requesting permission
@@ -53,4 +59,6 @@
         This version includes updates by Erik Reinecke.
     </string>
     <string name="dummy_data" translatable="false">{\"timeFrameStart\":\"2015–06-18\",\"timeFrameEnd\":\"2015-06-19\",\"count\":1,\"fixtures\":[{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}},{\"_links\":{\"self\":{\"href\":\"http://api.football-data.org/alpha/fixtures/140514\"},\"soccerseason\":{\"href\":\"http://api.football-data.org/alpha/soccerseasons/357\"},\"homeTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/275\"},\"awayTeam\":{\"href\":\"http://api.football-data.org/alpha/teams/263\"}},\"date\":\"2015-06-19T22:00:00Z\",\"status\":\"FINISHED\",\"matchday\":42,\"homeTeamName\":\"TESTING1\",\"awayTeamName\":\"TESTING2\",\"result\":{\"goalsHomeTeam\":2,\"goalsAwayTeam\":4}}]}</string>
+    <string name="champions_league">Champions League</string>
+    <string name="league_two">League Two</string>
 </resources>
